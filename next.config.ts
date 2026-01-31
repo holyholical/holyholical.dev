@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: '/holyholical.dev',
+  assetPrefix: '/holyholical.dev/',
 };
-
-
 
 export default nextConfig;
