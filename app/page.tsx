@@ -1,63 +1,81 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import ColorfulText from "@/components/ui/colorful-text";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 export default function Home() {
+  // Story steps
+  const storySteps = [
+    `Hello there! I'm Holy, a passionate developer and tech enthusiast.`,
+    `I'm introverted but I love talking with people.`,
+    `My coding journey began at a young age, and I've been fascinated by technology ever since.`,
+    `On this website, you'll find a collection of my projects, programming keys, and a Q&A section.`,
+    `Feel free to explore and reach out if you'd like to connect!`,
+  ];
+
+  const [currentStep, setCurrentStep] = useState(0);
+
+  // Words for typewriter effect
+  const words = [
+    { text: "Welcome" },
+    { text: "to" },
+    { text: "my" },
+    { text: "personal" },
+    { text: "website!" },
+    { text: "Explore" },
+    { text: "my" },
+    { text: "projects," },
+    { text: "keys," },
+    { text: "and" },
+    { text: "Q&A." },
+  ];
+
+  const handleNextStep = () => {
+    if (currentStep < storySteps.length - 1) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const handleResetStory = () => {
+    setCurrentStep(0);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/holyholical.dev/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="relative flex min-h-screen flex-col items-center justify-center py-2 bg-black overflow-hidden">
+      <main className="flex w-full flex-1 flex-col items-center justify-center px-10 text-center z-10">
+        <h1 className="text-6xl font-bold text-white mb-8">
+          <ColorfulText text="holyholical.dev" />
+        </h1>
+        <div className="max-w-3xl text-left mb-6">
+          <TextGenerateEffect
+            key={currentStep}
+            words={storySteps[currentStep]}
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/holyholical.dev/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="flex gap-4 flex-wrap justify-center">
+          {currentStep < storySteps.length - 1 ? (
+            <button
+              className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              onClick={handleNextStep}
+            >
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                Next
+              </span>
+            </button>
+          ) : (
+            <button
+              className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              onClick={handleResetStory}
+            >
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
+                Restart
+              </span>
+            </button>
+          )}
         </div>
       </main>
     </div>
