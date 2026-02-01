@@ -115,8 +115,15 @@ cQNtEie1yg==
       
       `,
   },
+  {
+    name: "SSH Public Key",
+    type: "SSH",
+    description: "My SSH public key for secure server access.",
+    value: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFtNZ90UtU2aJqWi7ZFRi4tq3B4NST1TOh7GO2VM5nQX`,
+  },
 ];
-const shortenKey = (key: string, chars = 100) => {
+
+const shortenKey = (key: string, chars = 20) => {
   const lines = key.split("\n").map((line) => line.trimEnd());
   const totalLength = lines.reduce((sum, l) => sum + l.length, 0);
   if (totalLength <= chars * 2) return key;
@@ -148,7 +155,8 @@ const shortenKey = (key: string, chars = 100) => {
 
 export default function KeysPage() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const [expanded, setExpanded] = useState(false);
+  const [expandedKeys, setExpandedKeys] = useState<Record<number, boolean>>({});
+
   const handleCopy = (value: string) => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard
@@ -157,24 +165,12 @@ export default function KeysPage() {
           setCopiedKey(value);
           setTimeout(() => setCopiedKey(null), 2000);
         })
-        .catch(() => {
-          alert("Clipboard API not available");
-        });
-    } else {
-      const textArea = document.createElement("textarea");
-      textArea.value = value;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand("copy");
-        setCopiedKey(value);
-        setTimeout(() => setCopiedKey(null), 2000);
-      } catch {
-        alert("Copy not supported");
-      } finally {
-        document.body.removeChild(textArea);
-      }
+        .catch(() => alert("Clipboard API not available"));
     }
+  };
+
+  const toggleExpand = (idx: number) => {
+    setExpandedKeys((prev) => ({ ...prev, [idx]: !prev[idx] }));
   };
 
   return (
@@ -198,13 +194,13 @@ export default function KeysPage() {
             </div>
             <p className="text-gray-400 mb-2">{key.description}</p>
             <pre className="bg-gray-900 p-3 rounded-lg overflow-x-auto text-sm">
-              {expanded ? key.value : shortenKey(key.value)}
+              {expandedKeys[idx] ? key.value : shortenKey(key.value)}
             </pre>
             <button
               className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-8 py-2 bg-[#0070f3] rounded-md text-white font-light transition duration-200 ease-linear mt-3"
-              onClick={() => setExpanded(!expanded)}
+              onClick={() => toggleExpand(idx)}
             >
-              {expanded ? "Show Less" : "Show More"}
+              {expandedKeys[idx] ? "Show Less" : "Show More"}
             </button>
           </div>
         ))}
