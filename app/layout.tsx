@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { GlobalEffects } from "../components/GlobalEffects";
 import TopBar from "@/components/TopBar";
 import "./globals.css";
+import Oneko from "@/components/oneko/oneko";
 
 export const metadata: Metadata = {
   title: "holyholical.dev",
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body
         className={`antialiased flex flex-col min-h-screen bg-black text-white`}
       >
+        <Oneko />
         <TopBar
           buttons={[
             { label: "home", path: "/" },
@@ -30,7 +32,9 @@ export default function RootLayout({
           ]}
         />
         {children}
-        <GlobalEffects />
+        <div>
+          <GlobalEffects />
+        </div>
         <Footer />
       </body>
     </html>

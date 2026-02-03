@@ -10,6 +10,13 @@ interface Project {
   html_url: string;
 }
 
+interface GitHubRepo {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+}
+
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -22,7 +29,7 @@ export default function ProjectsPage() {
           `https://api.github.com/users/${username}/repos?sort=updated`,
         );
         const data = await res.json();
-        const mapped: Project[] = data.map((repo: any) => ({
+        const mapped: Project[] = data.map((repo: GitHubRepo) => ({
           id: repo.id,
           name: repo.name,
           description: repo.description,

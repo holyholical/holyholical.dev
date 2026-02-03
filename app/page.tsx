@@ -5,7 +5,6 @@ import ColorfulText from "@/components/ui/colorful-text";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 export default function Home() {
-  // Story steps
   const storySteps = [
     `Hello there! I'm Holy, a passionate developer and tech enthusiast.`,
     `I'm introverted but I love talking with people.`,
@@ -15,22 +14,6 @@ export default function Home() {
   ];
 
   const [currentStep, setCurrentStep] = useState(0);
-
-  // Words for typewriter effect
-  const words = [
-    { text: "Welcome" },
-    { text: "to" },
-    { text: "my" },
-    { text: "personal" },
-    { text: "website!" },
-    { text: "Explore" },
-    { text: "my" },
-    { text: "projects," },
-    { text: "keys," },
-    { text: "and" },
-    { text: "Q&A." },
-  ];
-
   const handleNextStep = () => {
     if (currentStep < storySteps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -57,7 +40,7 @@ export default function Home() {
         <div className="flex gap-4 flex-wrap justify-center">
           {currentStep < storySteps.length - 1 ? (
             <button
-              className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="relative inline-flex h-12 overflow-hidden rounded-full focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
               onClick={handleNextStep}
             >
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
@@ -67,7 +50,7 @@ export default function Home() {
             </button>
           ) : (
             <button
-              className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+              className="relative inline-flex h-12 overflow-hidden rounded-full focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
               onClick={handleResetStory}
             >
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
