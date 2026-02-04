@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import { GlobalEffects } from "../components/GlobalEffects";
 import TopBar from "@/components/TopBar";
 import "./globals.css";
-import Oneko from "@/components/oneko";
+import Oneko from "@/components/oneko/oneko";
 
 export const metadata: Metadata = {
   title: "holyholical.dev",
