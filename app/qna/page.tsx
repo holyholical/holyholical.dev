@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 interface QAItem {
   question: string;
@@ -15,7 +15,7 @@ interface UserQuestion {
   authorEmail?: string;
   submittedAt: string;
   answeredAt?: string;
-  status: 'pending' | 'answered';
+  status: "pending" | "answered";
 }
 
 const staticQAList: QAItem[] = [
@@ -37,26 +37,27 @@ const staticQAList: QAItem[] = [
 ];
 
 export default function QnAPage() {
-  const [userQuestions, setUserQuestions] = useState<UserQuestion[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [userQuestions] = useState<UserQuestion[]>([]);
+  const [loading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    question: '',
-    authorName: '',
-    authorEmail: ''
+    question: "",
+    authorName: "",
+    authorEmail: "",
   });
-  const [submitMessage, setSubmitMessage] = useState('');
-
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setSubmitMessage('');
+    setSubmitMessage("");
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -69,7 +70,10 @@ export default function QnAPage() {
             <h2 className="text-2xl font-bold mb-6">Ask a Question</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="question" className="block text-sm font-medium mb-2">
+                <label
+                  htmlFor="question"
+                  className="block text-sm font-medium mb-2"
+                >
                   Your Question *
                 </label>
                 <textarea
@@ -83,12 +87,17 @@ export default function QnAPage() {
                   className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400"
                   placeholder="What would you like to know?"
                 />
-                <p className="text-xs text-gray-400 mt-1">Maximum 500 characters</p>
+                <p className="text-xs text-gray-400 mt-1">
+                  Maximum 500 characters
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="authorName" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="authorName"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Your Name
                   </label>
                   <input
@@ -103,7 +112,10 @@ export default function QnAPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="authorEmail" className="block text-sm font-medium mb-2">
+                  <label
+                    htmlFor="authorEmail"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Your Email
                   </label>
                   <input
@@ -123,13 +135,17 @@ export default function QnAPage() {
                 disabled={submitting || !formData.question.trim()}
                 className="w-full md:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg font-medium transition-colors"
               >
-                {submitting ? 'Submitting...' : 'Submit Question'}
+                {submitting ? "Submitting..." : "Submit Question"}
               </button>
-              <span className="text-xs text-gray-400 mt-1 pl-2 pt-2 font-medium italic text-center">Not working rn due to Github Pages serving only static pages.</span>
+              <span className="text-xs text-gray-400 mt-1 pl-2 pt-2 font-medium italic text-center">
+                Not working rn due to Github Pages serving only static pages.
+              </span>
             </form>
 
             {submitMessage && (
-              <div className={`mt-4 p-3 rounded-lg ${submitMessage.includes('✅') ? 'bg-green-900' : 'bg-red-900'}`}>
+              <div
+                className={`mt-4 p-3 rounded-lg ${submitMessage.includes("✅") ? "bg-green-900" : "bg-red-900"}`}
+              >
                 <p className="text-sm">{submitMessage}</p>
               </div>
             )}
@@ -137,7 +153,9 @@ export default function QnAPage() {
         </div>
 
         <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold mb-8">
+            Frequently Asked Questions
+          </h2>
           <div className="space-y-6">
             {staticQAList.map((item, index) => (
               <div
@@ -159,7 +177,9 @@ export default function QnAPage() {
             </div>
           ) : userQuestions.length === 0 ? (
             <div className="bg-gray-800 rounded-xl p-8 text-center">
-              <p className="text-gray-400">No answered questions yet. Be the first to ask!</p>
+              <p className="text-gray-400">
+                No answered questions yet. Be the first to ask!
+              </p>
             </div>
           ) : (
             <div className="space-y-6">
@@ -171,8 +191,10 @@ export default function QnAPage() {
                   <h3 className="text-xl font-semibold mb-3">{q.question}</h3>
                   <p className="text-gray-300 mb-4">{q.answer}</p>
                   <div className="text-sm text-gray-500 border-t border-gray-700 pt-3">
-                    <p>Asked by {q.authorName || 'Anonymous'}</p>
-                    <p>Answered on {new Date(q.answeredAt!).toLocaleDateString()}</p>
+                    <p>Asked by {q.authorName || "Anonymous"}</p>
+                    <p>
+                      Answered on {new Date(q.answeredAt!).toLocaleDateString()}
+                    </p>
                   </div>
                 </div>
               ))}
