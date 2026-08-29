@@ -1,84 +1,115 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { SimpleLoader } from "@/components/ui/Loader";
+import { useMemo, useState } from "react";
+import ShelfTag from "@/components/ShelfTag";
+import { GITHUB_PROFILE_URL, stampDate, type Repo } from "@/lib/github";
+import { useFeed } from "@/lib/use-feed";
 
-interface Project {
-  id: number;
-  name: string;
-  description: string | null;
-  html_url: string;
+const ALL = "all";
+const NO_REPOS: Repo[] = [];
+
+function languagesOf(repos: Repo[]): string[] {
+  const seen = new Set<string>();
+  repos.forEach((repo) => seen.add(repo.language ?? "unlabelled"));
+  return Array.from(seen).sort((a, b) => a.localeCompare(b));
 }
 
-interface GitHubRepo {
-  id: number;
-  name: string;
-  description: string | null;
-  html_url: string;
+function CatalogueRow({ repo }: { repo: Repo }) {
+  return (
+    <li>
+      <a
+        className="catalogue__row"
+        href={repo.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ "--band": repo.bandColor } as React.CSSProperties}
+      >
+        <span className="catalogue__swatch" aria-hidden="true" />
+        <span>
+          <span className="catalogue__name">{repo.name}</span>
+          <span className="catalogue__lang">
+            {repo.language ?? "unlabelled"}
+            {repo.isFork ? " · fork" : ""}
+            {repo.isArchived ? " · archived" : ""}
+          </span>
+        </span>
+        <p className="catalogue__desc">{repo.description ?? "No description written yet."}</p>
+        <span className="catalogue__date">Packed {stampDate(repo.pushedAt)}</span>
+      </a>
+    </li>
+  );
 }
 
 export default function ProjectsPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { state, retry } = useFeed();
+  const [language, setLanguage] = useState(ALL);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const username = "holyholical";
-        const res = await fetch(
-          `https://api.github.com/users/${username}/repos?sort=updated`,
-        );
-        const data = await res.json();
-        const mapped: Project[] = data.map((repo: GitHubRepo) => ({
-          id: repo.id,
-          name: repo.name,
-          description: repo.description,
-          html_url: repo.html_url,
-        }));
-        setProjects(mapped);
-      } catch (error) {
-        console.error("Failed to fetch GitHub repos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <h1 className="text-2xl font-bold">Loading Projects...</h1>
-        <SimpleLoader />
-      </div>
-    );
-  }
+  const repos = state.status === "ready" ? state.repos : NO_REPOS;
+  const languages = useMemo(() => languagesOf(repos), [repos]);
+  const shown = useMemo(
+    () => (language === ALL ? repos : repos.filter((repo) => (repo.language ?? "unlabelled") === language)),
+    [repos, language],
+  );
 
   return (
-    <div className="min-h-screen bg-black text-white py-10 px-6">
-      <h1 className="text-4xl font-bold text-center mb-8">Projects</h1>
-      <div className="max-w-5xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition"
-          >
-            <h2 className="text-xl font-semibold mb-2">{project.name}</h2>
-            <p className="text-gray-300 mb-3">
-              {project.description || "No description"}
-            </p>
-            <a
-              href={project.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:underline"
-            >
-              Visit
-            </a>
-          </div>
-        ))}
+    <section className="shelf" aria-labelledby="catalogue-title">
+      <div className="shelf__head">
+        <h1 id="catalogue-title" className="shelf__title">
+          Seed catalogue
+        </h1>
+        <p className="shelf__note">Every public repository, in the order it was last packed.</p>
       </div>
-    </div>
+
+      {state.status === "loading" ? <p className="shelf__note">Fetching the catalogue from GitHub…</p> : null}
+
+      {state.status === "error" ? (
+        <ShelfTag heading="The catalogue is out of reach">
+          <p>GitHub did not return the repository list. This is usually the unauthenticated rate limit.</p>
+          <p className="tag__actions">
+            <button type="button" className="tag__button" onClick={retry}>
+              Try again
+            </button>
+            <a className="tag__link" href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+              Browse on GitHub ↗
+            </a>
+          </p>
+        </ShelfTag>
+      ) : null}
+
+      {state.status === "empty" ? (
+        <ShelfTag heading="Nothing sown yet">
+          <p>GitHub lists no public repositories for holyholical right now.</p>
+        </ShelfTag>
+      ) : null}
+
+      {state.status === "ready" ? (
+        <>
+          <ul className="filters" aria-label="Filter by language">
+            <li>
+              <button type="button" className="filter" aria-pressed={language === ALL} onClick={() => setLanguage(ALL)}>
+                All ({repos.length})
+              </button>
+            </li>
+            {languages.map((lang) => (
+              <li key={lang}>
+                <button
+                  type="button"
+                  className="filter"
+                  aria-pressed={language === lang}
+                  onClick={() => setLanguage(lang)}
+                >
+                  {lang}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <ul className="catalogue" aria-live="polite">
+            {shown.map((repo) => (
+              <CatalogueRow key={repo.id} repo={repo} />
+            ))}
+          </ul>
+        </>
+      ) : null}
+    </section>
   );
 }

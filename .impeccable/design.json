@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-29T00:00:00Z",
+  "title": "Design System: holyholical.dev",
+  "extensions": {
+    "colorMeta": {
+      "rack-green": { "role": "primary", "displayName": "Rack Green", "canonical": "#1c5e3a", "tonalRamp": ["#0a2416", "#123f27", "#1c5e3a", "#2b7a4f", "#4a9a6c", "#6fb98d", "#a6d9ba", "#d6ecdf"] },
+      "stamp-red": { "role": "secondary", "displayName": "Stamp Red", "canonical": "#b7321f", "tonalRamp": ["#3d0f09", "#6e1c12", "#b7321f", "#d1543f", "#e07a66", "#eba090", "#f4c6bb", "#fbe9e4"] },
+      "packet-paper": { "role": "neutral", "displayName": "Packet Paper", "canonical": "#f6f1e4", "tonalRamp": ["#3a3527", "#6b6349", "#9c9170", "#c4ba9c", "#e6dfcc", "#f0eadb", "#f6f1e4", "#fbf9f3"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#12261a", "tonalRamp": ["#12261a", "#22392c", "#3f5a4a", "#5d7a68", "#7f9a8a", "#a5bcae", "#cbdbd1", "#e9f0ec"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The header sign only." },
+      "headline": { "displayName": "Headline", "purpose": "Packet variety names, sign titles." },
+      "stamp": { "displayName": "Stamp", "purpose": "Rubber stamps and price-gun labels; never body copy." }
+    },
+    "shadows": [
+      { "name": "packet-rest", "value": "0 6px 14px rgba(8,30,18,0.35)", "purpose": "A packet standing in its slot." },
+      { "name": "packet-lean", "value": "0 14px 28px rgba(8,30,18,0.45)", "purpose": "A packet leaning forward or lifted on hover." },
+      { "name": "paper", "value": "0 2px 4px rgba(8,30,18,0.3)", "purpose": "Tags, signs, cards, labels." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Every transition and the slot-in entrance." },
+      { "name": "slot-in", "value": "700ms, 55ms stagger per packet", "purpose": "Packets dropping into their slots when the feed lands; the only entrance on the site." },
+      { "name": "flip", "value": "560ms", "purpose": "Packet turning to its back on hover/focus." }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "480px" },
+      { "name": "wide", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Aisle Link",
+      "kind": "nav",
+      "refersTo": "aisle-link",
+      "description": "A clipped sign in the navigation strip; the current page reads as paper.",
+      "html": "<nav class=\"ds-aisle\"><a class=\"ds-aisle-sign\" href=\"#\"><span class=\"ds-aisle-label\">Home</span><span class=\"ds-aisle-sub\">the rack</span></a><a class=\"ds-aisle-sign\" aria-current=\"page\" href=\"#\"><span class=\"ds-aisle-label\">Projects</span><span class=\"ds-aisle-sub\">catalogue</span></a></nav>",
+      "css": ".ds-aisle{display:flex;gap:8px;background:#1c5e3a;padding:16px}.ds-aisle-sign{display:flex;flex-direction:column;gap:2px;padding:10px 14px 9px;background:#123f27;color:#f6f1e4;text-decoration:none;border-top:2px solid #a6d9ba;font-family:'Schibsted Grotesk',Arial,sans-serif;transition:background-color 160ms cubic-bezier(.16,1,.3,1)}.ds-aisle-sign:hover{background:#2b7a4f}.ds-aisle-sign[aria-current=page]{background:#f6f1e4;color:#12261a;border-top-color:#f6f1e4}.ds-aisle-sign:focus-visible{outline:2px solid #fff;outline-offset:3px}.ds-aisle-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.ds-aisle-sub{font-size:.75rem;color:#a6d9ba}.ds-aisle-sign[aria-current=page] .ds-aisle-sub{color:#3f5a4a}"
+    },
+    {
+      "name": "Tag Button",
+      "kind": "button",
+      "refersTo": "shelf-tag",
+      "description": "The only button: an ink block on a white shelf tag, used for retry.",
+      "html": "<div class=\"ds-tag\"><button class=\"ds-tag-button\">Restock the rack</button> <a class=\"ds-tag-link\" href=\"#\">Browse on GitHub ↗</a></div>",
+      "css": ".ds-tag{background:#fff;color:#12261a;border-radius:6px;padding:20px 22px;box-shadow:0 2px 4px rgba(8,30,18,.3);font-family:'Schibsted Grotesk',Arial,sans-serif;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);display:inline-flex;gap:16px;align-items:center}.ds-tag-button{font:inherit;font-weight:700;background:#12261a;color:#fff;border:0;border-radius:3px;padding:10px 16px;cursor:pointer;transition:background-color 160ms cubic-bezier(.16,1,.3,1)}.ds-tag-button:hover{background:#123f27}.ds-tag-button:focus-visible{outline:2px solid #12261a;outline-offset:3px}.ds-tag-link{font-weight:700;color:#12261a;text-underline-offset:3px}"
+    },
+    {
+      "name": "Price-gun Label / Filter",
+      "kind": "chip",
+      "refersTo": "stamp",
+      "description": "White pill in stamp type; pressed state is ink.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">All (8)</button><button class=\"ds-chip\">TypeScript</button><button class=\"ds-chip\">C++</button></div>",
+      "css": ".ds-chips{display:flex;gap:8px;background:#1c5e3a;padding:16px}.ds-chip{font-family:'Courier Prime','Courier New',monospace;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#12261a;background:#fff;border:0;border-radius:999px;padding:5px 12px;box-shadow:0 2px 4px rgba(8,30,18,.3);cursor:pointer;transition:background-color 160ms cubic-bezier(.16,1,.3,1)}.ds-chip[aria-pressed=true]{background:#12261a;color:#fff}.ds-chip:hover{background:#f6f1e4}.ds-chip[aria-pressed=true]:hover{background:#123f27}"
+    },
+    {
+      "name": "Packet",
+      "kind": "card",
+      "refersTo": "packet",
+      "description": "The signature object: a seed packet front with band, print area, variety name, strapline.",
+      "html": "<a class=\"ds-packet\" href=\"#\"><span class=\"ds-packet-band\"><span>TypeScript</span><span class=\"ds-packet-mark\">№02</span></span><span class=\"ds-packet-print\"></span><span class=\"ds-packet-name\">holyholical.dev</span><span class=\"ds-packet-strap\">open source · grown in public</span><span class=\"ds-packet-tended\">tended 6 months ago</span></a>",
+      "css": ".ds-packet{--band:#2a63a6;display:flex;flex-direction:column;width:180px;aspect-ratio:2/3;background:#f6f1e4;color:#12261a;border-radius:3px;box-shadow:0 6px 14px rgba(8,30,18,.35);text-decoration:none;overflow:hidden;position:relative;font-family:'Schibsted Grotesk',Arial,sans-serif;transition:transform 560ms cubic-bezier(.16,1,.3,1),box-shadow 560ms cubic-bezier(.16,1,.3,1)}.ds-packet:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(8,30,18,.45)}.ds-packet:focus-visible{outline:2px solid #fff;outline-offset:3px}.ds-packet::before{content:'';position:absolute;top:5px;left:50%;width:12px;height:7px;margin-left:-6px;border-radius:0 0 6px 6px;background:#1c5e3a}.ds-packet-band{display:flex;justify-content:space-between;background:var(--band);color:#f6f1e4;padding:12px 12px 6px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.ds-packet-mark{font-family:'Courier Prime',monospace;opacity:.85}.ds-packet-print{flex:1}.ds-packet-name{font-family:'Bricolage Grotesque','Arial Narrow',sans-serif;font-variation-settings:'wdth' 75;font-weight:800;font-size:1.5rem;line-height:1.05;padding:10px 14px 0}.ds-packet-strap{padding:6px 14px 0;font-size:.6875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3f5a4a}.ds-packet-tended{padding:4px 14px 14px;font-size:.75rem;color:#3f5a4a}"
+    },
+    {
+      "name": "Stamp",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "The PACKED FOR date on a packet back.",
+      "html": "<span class=\"ds-stamp\"><span class=\"ds-stamp-small\">Packed for</span><span class=\"ds-stamp-date\">29 Aug 2026</span></span>",
+      "css": ".ds-stamp{display:inline-flex;flex-direction:column;font-family:'Courier Prime','Courier New',monospace;font-weight:700;text-transform:uppercase;color:#b7321f;border:1.5px solid #b7321f;border-radius:3px;padding:3px 6px 2px;transform:rotate(-2deg);line-height:1.1}.ds-stamp-small{font-size:.625rem;letter-spacing:.12em}.ds-stamp-date{font-size:.875rem;letter-spacing:.04em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Seed Rack",
+    "overview": "The whole site is one object: a powder-coated wire seed rack standing in a garden center, in daylight. Every GitHub repository is a printed seed packet standing in a slot. The rack's saturated green owns the page; paper, white tags and ink sit on it as objects, never as page chrome. Liveness is physical: the packets most recently pushed lean forward out of their slots.",
+    "keyCharacteristics": ["Committed color: rack green carries the page ground and most of the surface.", "Print grammar: two-color packet illustrations, stamped dates, condensed grotesque variety names.", "Objects on a rack, not cards on a canvas.", "One orchestrated motion; still at rest.", "Daylight, not lamplight."],
+    "rules": [
+      { "name": "The Object Rule", "body": "Paper and white exist only as objects (packets, tags, cards) sitting on the green. If a region of paper has no physical counterpart on a rack, it is wrong.", "section": "colors" },
+      { "name": "The One Stamp Rule", "body": "Stamp Red appears once per packet, on the date. It is not an accent color.", "section": "colors" },
+      { "name": "The Linguist Rule", "body": "Language bands use GitHub's linguist colors verbatim; unknown languages take Kraft.", "section": "colors" },
+      { "name": "The Stamp Rule", "body": "Monospace appears only inside a stamp or a price-gun label.", "section": "typography" },
+      { "name": "The Condensed Rule", "body": "Display and headline always use the condensed width axis (wdth 75).", "section": "typography" },
+      { "name": "The Daylight Rule", "body": "Shadows fall down and slightly forward, as under skylights; never upward, never colored.", "section": "elevation" }
+    ],
+    "dos": ["Do keep Rack Green as the page ground on every route; objects sit on it.", "Do print every repo as a packet using the same front/back grammar, with the band color from GitHub's linguist data.", "Do use one orchestrated motion (packets sliding into slots on load) and keep everything else still.", "Do shape illustrations as two-color misregistered prints picked deterministically from the repo name.", "Do let the oneko cat live on the top shelf; it is a binding personality asset."],
+    "donts": ["Don't use a dark page ground, a monospace body, neon accents or glows.", "Don't ship a hero, a three-feature-card row, or a CTA button row.", "Don't add hover effects beyond the packet lift/flip and the aisle link ground change.", "Don't invent stars, downloads, proficiency levels or any number the GitHub API did not return.", "Don't use gray for secondary text on paper; use Ink Soft."]
+  }
+}
