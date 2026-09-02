@@ -1,60 +1,61 @@
 "use client";
 
-/*
- * THESIS: the home page is the rack, not a page about the rack. Every repository is a
- * seed packet standing in a slot; the feed's liveness is physical (recent packets lean
- * out). It refuses the hero-plus-cards portfolio and the dark terminal.
- * OWN-WORLD: rack green ground with wire shelves; paper packets with a linguist-colored
- * band, a misregistered two-color plant print, a condensed grotesque variety name and a
- * red packing stamp; white clipped tags for hand-set copy.
- * STORY: "this person is growing things right now"; the visitor picks a packet and lands
- * on the repository.
- * FIRST VIEWPORT: hung sign (name + one line), aisle strip, top shelf with the intro tag
- * beside the cat, then the first shelf of packets, the three newest leaning forward.
- * FORM: Seed Rack, sixth of seven grounded directions, seed key 8f5bddec.
- */
+import DialogBox, { type DialogLine } from "@/components/DialogBox";
+import RetroWindow from "@/components/RetroWindow";
+import Shrine from "@/components/Shrine";
+import WhatsNew from "@/components/WhatsNew";
+import { useShrine } from "@/lib/shrine-context";
+import { CAST } from "@/lib/sprites";
 
-import Rack from "@/components/Rack";
-import ShelfTag from "@/components/ShelfTag";
-import { tendedLabel } from "@/lib/github";
-import { useFeed } from "@/lib/use-feed";
+const INTRO: readonly DialogLine[] = [
+  { text: "Hello there! I'm Holy. Welcome to my little corner of the web.", expression: "happy" },
+  { text: "I'm a developer and a tech enthusiast. I'm introverted, but I love talking with people. Really!", expression: "normal" },
+  { text: "My coding journey started when I was small, and I've been fascinated by technology ever since.", expression: "wink" },
+  { text: "Everything on the projects page is pulled live from my GitHub, so it never goes stale.", expression: "surprised" },
+  { text: "Have a look around, click the girls, turn on the music, and reach out on GitHub if you'd like to talk!", expression: "love" },
+];
 
+const ABOUT: readonly [string, string][] = [
+  ["name", "Holy"],
+  ["handle", "holyholical"],
+  ["type", "introvert who loves talking with people"],
+  ["favourite language", "TypeScript with React"],
+  ["also speaks", "C, C++, C#, Python, a little Assembly"],
+  ["open source", "yes, and I love learning from the community"],
+  ["status", "always building something"],
+];
+
+/** The shrine's front room: the VN intro, an about table, what's new, and the cast. */
 export default function Home() {
-  const { state, retry } = useFeed();
+  const { t } = useShrine();
   return (
     <>
-      <section className="top-shelf" aria-label="About Holy">
-        <ShelfTag heading="Hello there, I'm Holy.">
-          <p>
-            A passionate developer and tech enthusiast. I&apos;m introverted but I love talking with people. My coding
-            journey began at a young age, and I&apos;ve been fascinated by technology ever since.
-          </p>
-          <p>
-            On this rack you&apos;ll find my projects, a growing guide of what I work in, and a few questions people
-            have asked me. Feel free to explore and reach out if you&apos;d like to connect!
-          </p>
-        </ShelfTag>
-        {state.status === "ready" ? (
-          <p className="rack-label">
-            <strong className="rack-label__count">{state.repos.length}</strong>
-            <span className="rack-label__text">
-              {state.repos.length === 1 ? "variety" : "varieties"} on the rack
-              <br />
-              {tendedLabel(state.repos[0].pushedAt)}
-            </span>
-          </p>
-        ) : null}
-      </section>
+      <RetroWindow title={t("hello!!")} icon="💬" headingId="intro-title">
+        <DialogBox speaker={CAST[0]} lines={INTRO} />
+      </RetroWindow>
 
-      <section className="shelf" aria-labelledby="rack-title">
-        <div className="shelf__head">
-          <h2 id="rack-title" className="shelf__title">
-            On the rack
-          </h2>
-          <p className="shelf__note">Most recently tended first. Turn a packet over for the sowing instructions.</p>
-        </div>
-        <Rack state={state} retry={retry} />
-      </section>
+      <div className="two-up">
+        <RetroWindow title={t("about me")} icon="📇" headingId="about-title">
+          <table className="table table--kv">
+            <tbody>
+              {ABOUT.map(([key, value]) => (
+                <tr key={key}>
+                  <th scope="row">{t(key)}</th>
+                  <td>{key === "handle" || key === "name" ? value : t(value)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </RetroWindow>
+
+        <RetroWindow title={t("what's new")} icon="💾" headingId="new-title">
+          <WhatsNew />
+        </RetroWindow>
+      </div>
+
+      <RetroWindow title={t("the shrine")} icon="⛩" headingId="shrine-title">
+        <Shrine />
+      </RetroWindow>
     </>
   );
 }
