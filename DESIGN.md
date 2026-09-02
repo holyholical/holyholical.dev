@@ -172,6 +172,8 @@ path.
 
 ## Rules
 
+- No emoji, ever. Icons are 10x10 pixel maps in `lib/icons.ts` rendered by `PixelIcon`;
+  decorative glyphs are plain text characters (★ ☆ ♡ ✧ ♪) that every font ships.
 - Nothing blurs. Shadows are hard offsets. Motion uses `steps()` so it looks like frames.
 - Bevels are two-tone borders: light on top-left, dark on bottom-right; pressed inverts.
 - Blink is allowed on exactly two things: NEW! tags and the dialog advance hint.

@@ -1,24 +1,24 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import PixelIcon from "@/components/PixelIcon";
+import type { IconName } from "@/lib/icons";
 
 interface RetroWindowProps {
   title: string;
-  icon?: string;
+  icon?: IconName;
   children: ReactNode;
   className?: string;
   headingId?: string;
 }
 
 /** A Windows-95 style window. Minimise and close both fold the body; the title bar always stays so it can reopen. */
-export default function RetroWindow({ title, icon = "♡", children, className, headingId }: RetroWindowProps) {
+export default function RetroWindow({ title, icon = "heart", children, className, headingId }: RetroWindowProps) {
   const [isOpen, setOpen] = useState(true);
   return (
     <section className={`win ${isOpen ? "" : "win--folded"} ${className ?? ""}`.trim()} aria-labelledby={headingId}>
       <div className="win__bar">
-        <span className="win__icon" aria-hidden="true">
-          {icon}
-        </span>
+        <PixelIcon name={icon} className="win__icon" />
         <h2 className="win__title" id={headingId}>
           {title}
         </h2>

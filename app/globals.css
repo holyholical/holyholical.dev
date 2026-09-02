@@ -138,13 +138,20 @@ p {
 }
 
 .construction__text {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 6px 10px;
   font-family: var(--font-pixel);
   font-size: 9px;
   line-height: 1;
   color: var(--ink);
   background: var(--lemon);
+}
+
+.construction__icon {
+  display: block;
+  margin: -5px 0;
 }
 
 .marquee {
@@ -275,9 +282,17 @@ p {
 }
 
 .nav__btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   text-align: left;
   width: 100%;
+}
+
+.nav__icon {
+  flex: none;
+  display: block;
+  margin: -5px 0;
 }
 
 /* ---------- windows ---------- */
@@ -301,7 +316,8 @@ p {
 }
 
 .win__icon {
-  font-size: 13px;
+  flex: none;
+  display: block;
 }
 
 .win__title {

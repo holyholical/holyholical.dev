@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import PixelIcon from "@/components/PixelIcon";
+import type { IconName } from "@/lib/icons";
 
 const LINKS = [
-  { href: "/", label: "home", icon: "🏠" },
-  { href: "/projects/", label: "projects", icon: "💾" },
-  { href: "/skills/", label: "skills", icon: "⚔" },
-  { href: "/qna/", label: "q & a", icon: "💌" },
+  { href: "/", label: "home", icon: "home" as IconName },
+  { href: "/projects/", label: "projects", icon: "disk" as IconName },
+  { href: "/skills/", label: "skills", icon: "sword" as IconName },
+  { href: "/qna/", label: "q & a", icon: "letter" as IconName },
 ] as const;
 
 const normalise = (path: string) => (path.endsWith("/") ? path : `${path}/`);
@@ -23,7 +25,7 @@ export default function SideNav() {
           return (
             <li key={link.href}>
               <Link href={link.href} className={`btn nav__btn ${isCurrent ? "btn--active" : ""}`} aria-current={isCurrent ? "page" : undefined}>
-                <span aria-hidden="true">{link.icon}</span> {link.label}
+                <PixelIcon name={link.icon} className="nav__icon" /> {link.label}
               </Link>
             </li>
           );

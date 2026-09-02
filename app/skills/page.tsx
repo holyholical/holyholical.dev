@@ -31,7 +31,7 @@ const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 export default function SkillsPage() {
   const { t } = useShrine();
   return (
-    <RetroWindow title={t("my skills")} icon="⚔" headingId="skills-title">
+    <RetroWindow title={t("my skills")} icon="sword" headingId="skills-title">
       <p className="lead">{t("What I actually work in, as a collection. No star ratings, I refuse to grade myself.")}</p>
       <ul className="cards">
         {SKILLS.map((skill) => (

@@ -1,5 +1,6 @@
 "use client";
 
+import PixelIcon from "@/components/PixelIcon";
 import { useShrine } from "@/lib/shrine-context";
 
 export default function UnderConstruction() {
@@ -7,7 +8,7 @@ export default function UnderConstruction() {
   return (
     <p className="construction">
       <span className="construction__text">
-        <span aria-hidden="true">🚧</span> {t("always under construction")} <span aria-hidden="true">🚧</span>
+        <PixelIcon name="construction" className="construction__icon" /> {t("always under construction")} <PixelIcon name="construction" className="construction__icon" />
       </span>
     </p>
   );

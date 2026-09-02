@@ -34,7 +34,7 @@ const QA: readonly QAItem[] = [
 export default function QnAPage() {
   const { t } = useShrine();
   return (
-    <RetroWindow title={t("questions & answers")} icon="💌" headingId="qna-title">
+    <RetroWindow title={t("questions & answers")} icon="letter" headingId="qna-title">
       <p className="lead">{t("Things people have asked me, answered by me, with help from the mascot.")}</p>
       <ol className="chat">
         {QA.map((item) => (

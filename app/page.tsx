@@ -30,12 +30,12 @@ export default function Home() {
   const { t } = useShrine();
   return (
     <>
-      <RetroWindow title={t("hello!!")} icon="💬" headingId="intro-title">
+      <RetroWindow title={t("hello!!")} icon="chat" headingId="intro-title">
         <DialogBox speaker={CAST[0]} lines={INTRO} />
       </RetroWindow>
 
       <div className="two-up">
-        <RetroWindow title={t("about me")} icon="📇" headingId="about-title">
+        <RetroWindow title={t("about me")} icon="card" headingId="about-title">
           <table className="table table--kv">
             <tbody>
               {ABOUT.map(([key, value]) => (
@@ -48,12 +48,12 @@ export default function Home() {
           </table>
         </RetroWindow>
 
-        <RetroWindow title={t("what's new")} icon="💾" headingId="new-title">
+        <RetroWindow title={t("what's new")} icon="disk" headingId="new-title">
           <WhatsNew />
         </RetroWindow>
       </div>
 
-      <RetroWindow title={t("the shrine")} icon="⛩" headingId="shrine-title">
+      <RetroWindow title={t("the shrine")} icon="torii" headingId="shrine-title">
         <Shrine />
       </RetroWindow>
     </>

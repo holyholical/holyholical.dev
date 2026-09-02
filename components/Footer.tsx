@@ -23,7 +23,7 @@ export default function Footer() {
         {t("Best viewed at 800×600 in any browser that still supports blink. Made with")} ♡ {t("and HTML.")}
       </p>
       <p className="foot__line">
-        {t("Content on this site is under the MIT license.")} holyholical 🄯 2026 ·{" "}
+        {t("Content on this site is under the MIT license.")} holyholical (ↄ) 2026 ·{" "}
         <a href={`${REPO_URL}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">
           {t("license")}
         </a>
