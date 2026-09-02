@@ -128,6 +128,12 @@ export function stampDate(date: Date): string {
 }
 
 const DAY_MS = 86_400_000;
+const FRESH_DAYS = 7;
+
+/** True when the repo was pushed within the last week: it gets the blinking NEW! tag. */
+export function isFresh(date: Date, now: Date = new Date()): boolean {
+  return now.getTime() - date.getTime() < FRESH_DAYS * DAY_MS;
+}
 
 /** "tended today", "tended 3 days ago", "tended 2 months ago". */
 export function tendedLabel(date: Date, now: Date = new Date()): string {

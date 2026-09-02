@@ -1,263 +1,203 @@
 ---
 name: holyholical.dev
-description: A garden-center seed rack where every packet is a live GitHub repository.
+description: A 1998 anime shrine homepage. Pixel waifus, bevelled windows, sparkles, and a live GitHub feed.
 colors:
-  rack-green: "#1c5e3a"
-  rack-green-deep: "#123f27"
-  rack-green-lit: "#2b7a4f"
-  wire: "#a6d9ba"
-  packet-paper: "#f6f1e4"
-  packet-paper-shade: "#e6dfcc"
-  ink: "#12261a"
-  ink-soft: "#3f5a4a"
-  stamp-red: "#b7321f"
-  tag-white: "#ffffff"
-  band-typescript: "#2a63a6"
-  band-cpp: "#f34b7d"
-  band-c: "#555555"
-  band-python: "#3572a5"
-  band-kraft: "#b58a55"
-  card-rule: "#cfe0f3"
+  pink: "#ff8fc8"
+  hot: "#ff2d95"
+  rose: "#ffd1e8"
+  lav: "#c8a2ff"
+  lav-deep: "#9b6bff"
+  sky: "#a2d2ff"
+  mint: "#b5ead7"
+  lemon: "#fff3a8"
+  cream: "#fff7fb"
+  paper: "#ffffff"
+  ground: "#ffe0f0"
+  ink: "#3a1f3a"
+  ink-soft: "#6b4a6b"
+  bevel-light: "#ffffff"
+  bevel-dark: "#b06a9a"
+  bevel-darker: "#6b3a5e"
+  link: "#c2148a"
+  link-visited: "#7a3cc4"
+  counter-glow: "#7dff9a"
+  counter-well: "#110011"
+  rainbow-1: "#ffc2e0"
+  rainbow-2: "#d7c2ff"
+  rainbow-3: "#c2e6ff"
+  rainbow-4: "#c2ffe6"
+  rainbow-5: "#fff5c2"
+  sparkle-sky: "#7bd5ff"
+  sparkle-gold: "#ffd166"
 typography:
-  display:
-    fontFamily: "'Bricolage Grotesque', 'Archivo Narrow', 'Arial Narrow', sans-serif"
-    fontSize: "clamp(2rem, 5vw, 4.5rem)"
-    fontWeight: 800
-    lineHeight: 0.95
-    letterSpacing: "-0.02em"
-  headline:
-    fontFamily: "'Bricolage Grotesque', 'Archivo Narrow', 'Arial Narrow', sans-serif"
-    fontSize: "clamp(1.375rem, 2.4vw, 1.75rem)"
-    fontWeight: 800
-    lineHeight: 1.05
-    letterSpacing: "-0.01em"
-  title:
-    fontFamily: "'Bricolage Grotesque', 'Archivo Narrow', 'Arial Narrow', sans-serif"
-    fontSize: "1.125rem"
-    fontWeight: 700
-    lineHeight: 1.1
-  body:
-    fontFamily: "'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.5
-  label:
-    fontFamily: "'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: "0.08em"
-  small:
-    fontFamily: "'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.9375rem"
-    fontWeight: 400
-    lineHeight: 1.5
-  instruction:
-    fontFamily: "'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.875rem"
+  banner:
+    fontFamily: "'Press Start 2P', 'Courier New', monospace"
+    fontSize: "clamp(16px, 3.4vw, 30px)"
     fontWeight: 400
     lineHeight: 1.4
-  caption:
-    fontFamily: "'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif"
-    fontSize: "0.6875rem"
-    fontWeight: 700
+  pixel-lg:
+    fontFamily: "'Press Start 2P', 'Courier New', monospace"
+    fontSize: "11px"
+    fontWeight: 400
+    lineHeight: 1.4
+  pixel:
+    fontFamily: "'Press Start 2P', 'Courier New', monospace"
+    fontSize: "10px"
+    fontWeight: 400
+    lineHeight: 1.4
+  pixel-sm:
+    fontFamily: "'Press Start 2P', 'Courier New', monospace"
+    fontSize: "9px"
+    fontWeight: 400
+    lineHeight: 1.5
+  pixel-xs:
+    fontFamily: "'Press Start 2P', 'Courier New', monospace"
+    fontSize: "8px"
+    fontWeight: 400
+    lineHeight: 1.6
+  pixel-xxs:
+    fontFamily: "'Press Start 2P', 'Courier New', monospace"
+    fontSize: "7px"
+    fontWeight: 400
+    lineHeight: 1.3
+  body:
+    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: 1.5
+  body-lg:
+    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.5
+  body-sm:
+    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: 1.5
+  body-xs:
+    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.5
+  deco:
+    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
+    fontSize: "14px"
+    fontWeight: 400
     lineHeight: 1.2
-    letterSpacing: "0.08em"
-  stamp:
-    fontFamily: "'Courier Prime', 'Courier New', monospace"
-    fontSize: "0.8125rem"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "0.04em"
-  stamp-small:
-    fontFamily: "'Courier Prime', 'Courier New', monospace"
-    fontSize: "0.625rem"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "0.12em"
-  stamp-date:
-    fontFamily: "'Courier Prime', 'Courier New', monospace"
-    fontSize: "0.875rem"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "0.04em"
-  price-count:
-    fontFamily: "'Bricolage Grotesque', 'Archivo Narrow', 'Arial Narrow', sans-serif"
-    fontSize: "2.5rem"
-    fontWeight: 800
+  terminal-xl:
+    fontFamily: "'VT323', 'Courier New', monospace"
+    fontSize: "26px"
+    fontWeight: 400
+    lineHeight: 1.2
+  terminal-lg:
+    fontFamily: "'VT323', 'Courier New', monospace"
+    fontSize: "24px"
+    fontWeight: 400
+    lineHeight: 1.2
+  terminal:
+    fontFamily: "'VT323', 'Courier New', monospace"
+    fontSize: "22px"
+    fontWeight: 400
+    lineHeight: 1.2
+  terminal-md:
+    fontFamily: "'VT323', 'Courier New', monospace"
+    fontSize: "20px"
+    fontWeight: 400
+    lineHeight: 1.2
+  terminal-sm:
+    fontFamily: "'VT323', 'Courier New', monospace"
+    fontSize: "19px"
+    fontWeight: 400
+    lineHeight: 1.15
+  terminal-xs:
+    fontFamily: "'VT323', 'Courier New', monospace"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.2
+  sparkle:
+    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: 1
+  icon:
+    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
+    fontSize: "13px"
+    fontWeight: 400
     lineHeight: 1
 rounded:
-  none: "0px"
-  sign: "2px"
-  packet: "3px"
-  clip: "4px"
-  tag: "6px"
-  hook: "8px"
-  pill: "999px"
+  none: "0"
+  bubble: "10px"
+  chat: "12px"
+  chat-tail: "2px"
+  sprite-hit: "6px"
 spacing:
+  hair: "2px"
   xs: "4px"
-  sm: "8px"
-  md: "16px"
-  lg: "32px"
-  xl: "64px"
-components:
-  packet:
-    backgroundColor: "{colors.packet-paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.packet}"
-    padding: "0"
-  shelf-tag:
-    backgroundColor: "{colors.tag-white}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.tag}"
-    padding: "20px 22px 18px"
-  aisle-link:
-    backgroundColor: "{colors.rack-green-deep}"
-    textColor: "{colors.packet-paper}"
-    rounded: "{rounded.none}"
-    padding: "10px 14px"
-  aisle-link-active:
-    backgroundColor: "{colors.packet-paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "10px 14px"
-  stamp:
-    backgroundColor: "transparent"
-    textColor: "{colors.stamp-red}"
-    rounded: "{rounded.packet}"
-    padding: "3px 6px 2px"
+  sm: "6px"
+  md: "8px"
+  base: "10px"
+  lg: "12px"
+  xl: "14px"
+  xxl: "16px"
+  xxxl: "18px"
 ---
 
-# Design System: holyholical.dev
+# holyholical.dev: the Kawaii Shrine
 
-## Overview
+## The world
 
-**Creative North Star: "The Seed Rack"**
+It is 1998 and Holy has a homepage. It lives on a tiled pastel ground of stars and
+hearts, inside one big double-bordered page with a drop shadow that does not blur.
+Every section is a Windows-95 window with a pink-to-lavender title bar and working
+minimise and close buttons. The type is bitmap: Press Start 2P for anything that reads
+as a label or heading, DotGothic16 for body copy, VT323 for anything that feels like a
+terminal, a counter, or a visual-novel text box.
 
-The whole site is one object: a powder-coated wire seed rack standing in a garden center, in daylight. Every GitHub repository is a printed seed packet standing in a slot. The packet's front is the repo's face (a two-color botanical print, the variety name, a language band); its back is the sowing instructions (the description, the packed-for date, the link). The rack's saturated green owns the page; paper, white tags and ink sit on it as objects, never as page chrome. Liveness is physical: the packets most recently pushed lean forward out of their slots.
+## The cast
 
-Density is that of a real rack: many small printed objects, each legible on its own, read in rows. Personality comes from print detail (registration, stamps, tab cuts, hand-written shelf tags) rather than from motion; the one authored motion is packets sliding into their slots when the feed lands. Confirmed anti-references: the dark terminal portfolio (black ground, monospace body, neon), and the startup landing page (hero, three feature cards, CTA row).
+Four palette-swapped pixel girls narrate the site. They are drawn in `lib/sprites.ts` as
+a 20x31 grid of palette keys and rendered as SVG rects with crisp edges. Expressions are
+patches over the eyes, brows, and mouth. Howwy-tan (pink) is the mascot and the one who
+speaks in the intro dialog and the Q&A. Minto (mint), Lavvy (lavender), and Kuro (black)
+live in the shrine on the home page.
 
-**Key Characteristics:**
-- Committed color: rack green carries the page ground and most of the surface.
-- Print grammar: two-color packet illustrations, stamped dates, condensed grotesque variety names.
-- Objects on a rack, not cards on a canvas: every element is a thing that could physically hang there.
-- One orchestrated motion; still at rest.
-- Daylight, not lamplight: a light, saturated scene.
+## The voice
 
-## Colors
+Copy is written as plain English in source and run through `uwuify` at render. Level 1
+(default) swaps r and l for w, adds "ny", and sprinkles a suffix. Level 2 goes further.
+Level 0 is plain English for anyone who needs to read the page. "Holy" is always
+"Howwy". Repo names, URLs, and proper nouns like GitHub are rendered outside the uwu
+path.
 
-A saturated garden-center green carrying paper, white plastic and printed ink.
+## Rules
 
-### Primary
-- **Rack Green** (#1c5e3a): the page ground, the rack's powder coat. Owns every region not occupied by an object.
-- **Rack Green Deep** (#123f27): shadowed rack surfaces, inactive aisle links, the base plate.
-- **Rack Green Lit** (#2b7a4f): rack surfaces catching light; hover ground for green controls.
-- **Wire** (#a6d9ba): the shelf wires and slot rails, drawn as 2px lines on the green; also the smallest text on green (4.89:1).
+- No emoji, ever. Icons are 10x10 pixel maps in `lib/icons.ts` rendered by `PixelIcon`;
+  decorative glyphs are plain text characters (★ ☆ ♡ ✧ ♪) that every font ships.
+- Nothing blurs. Shadows are hard offsets. Motion uses `steps()` so it looks like frames.
+- Bevels are two-tone borders: light on top-left, dark on bottom-right; pressed inverts.
+- Blink is allowed on exactly two things: NEW! tags and the dialog advance hint.
+- Sound is opt-in, always. The BGM button is the only way audio starts.
+- The hit counter counts this browser only and says so. No fake global numbers.
+- Every interactive thing works with a keyboard and has a visible focus ring.
+- `prefers-reduced-motion` turns off the marquee, sparkles, bobbing, blinking, and the
+  rainbow ground.
+- The live GitHub feed is still the core. Loading, empty, and error states all speak in
+  Holy's voice and offer a retry and a link out.
 
-### Secondary
-- **Stamp Red** (#b7321f): the rubber-stamped PACKED FOR date and price-gun labels. Never a button color; never more than one stamp per packet.
+## The button wall
 
-### Tertiary (language bands)
-- **TypeScript Band** (#2a63a6, linguist #3178c6 darkened ~12% so paper text clears 4.5:1), **C++ Band** (#f34b7d), **C Band** (#555555), **Python Band** (#3572a5), **Kraft Band** (#b58a55, for repos with no language): each packet's top band and its illustration's second ink. These are GitHub's own linguist colors, so the band is a product fact, not decoration.
+Every page signs off with a wall of real 88x31 GIFs, the way link exchanges worked
+before social media. The buttons live in `public/buttons/` and are listed with alt text
+in `lib/buttons.ts`; they came from the cyber.dabamos.de archive, which asks that you
+copy rather than hot-link, so they are copied. The shrine's own button,
+`holyholical.gif`, is drawn by `scripts/make-site-button.py` from the same pixel-map
+language as the icons and lives in the sidebar with a copy-me HTML snippet. Buttons are
+plain `<img>` at native size with `image-rendering: pixelated`; only the ones with a
+real destination are links. Every GIF is checked for 88x31 in the test suite.
 
-### Neutral
-- **Card Rule** (#cfe0f3): the pale blue ruling on Q&A index cards, one line per 28px of text.
-- **Packet Paper** (#f6f1e4): packet front and back. Paper is an object color, never the page ground.
-- **Packet Paper Shade** (#e6dfcc): the folded flap, the tab cut, fold lines.
-- **Ink** (#12261a): all text on paper and white; green-black, not pure black.
-- **Ink Soft** (#3f5a4a): secondary text on paper. Tinted from ink, never gray.
-- **Tag White** (#ffffff): hand-written shelf tags, aisle signs, index cards.
+## MAXIMUM KAWAII
 
-### Named Rules
-**The Object Rule.** Paper and white exist only as objects (packets, tags, cards) sitting on the green. If a region of paper has no physical counterpart on a rack, it is wrong.
-**The One Stamp Rule.** Stamp Red appears once per packet, on the date. It is not an accent color.
-**The Linguist Rule.** Language bands use GitHub's linguist colors; a band may be darkened only as far as needed for its label to reach 4.5:1 (TypeScript is the one such case). Band text is Ink when the band's relative luminance exceeds 0.2 (C++, Kraft), Packet Paper otherwise. New languages take their linguist color; unknown languages take Kraft.
-
-## Typography
-
-**Display Font:** Bricolage Grotesque, condensed axis (with Archivo Narrow, Arial Narrow fallback)
-**Body Font:** Schibsted Grotesk (with Helvetica Neue, Arial fallback)
-**Stamp Font:** Courier Prime (with Courier New fallback)
-
-**Character:** Variety names on real packets are set in bold condensed grotesques; Bricolage at width 75 and weight 800 gives that with enough quirk to feel printed rather than templated. Schibsted Grotesk is the small sowing-instruction text: compact, humanist, cheap to read at 13px. Courier Prime exists only as a rubber stamp; it is measurement, not costume.
-
-### Hierarchy
-- **Display** (800, clamp(2rem, 5vw, 4.5rem), 0.95): the rack header sign only.
-- **Price Count** (800, 2.5rem, 1): the number inside the price-gun label on the top shelf.
-- **Headline** (800, clamp(1.375rem, 2.4vw, 1.75rem), 1.05): packet variety names, page sign titles.
-- **Title** (700, 1.125rem, 1.1): index-card questions, catalogue row names.
-- **Body** (400, 1rem, 1.5): shelf-tag copy, answers. Measure 60–70ch.
-- **Small** (400, 0.9375rem, 1.5): sign line, shelf notes, catalogue descriptions, card answers.
-- **Instruction** (400, 0.875rem, 1.4): the sowing-instructions description on a packet back.
-- **Label** (700, 0.75rem, 0.08em, uppercase): packet band text, aisle links, catalogue column heads.
-- **Caption** (700, 0.6875rem, 0.08em, uppercase): packet straplines and back-face section heads.
-- **Stamp** (700, 0.8125rem, 0.04em, uppercase, Courier Prime): price-gun labels, catalogue dates, filter chips; the packet stamp stacks **Stamp Small** (0.625rem, 0.12em) over **Stamp Date** (0.875rem).
-
-### Named Rules
-**The Stamp Rule.** Monospace appears only inside a stamp or a price-gun label. Body copy, headings and navigation never use it.
-**The Condensed Rule.** Display and headline always use the condensed width axis (wdth 75); regular-width Bricolage does not appear.
-
-## Layout
-
-The page is the rack, full-bleed green, with a maximum content width of 1120px centered. The rack header sign hangs at the top; the aisle navigation is a strip of clipped signs beneath it; shelves follow.
-
-Shelves are CSS grid rows: `repeat(auto-fill, minmax(180px, 1fr))` with a 24px slot gap on desktop, 16px on mobile. Each shelf is a wire line (2px, Wire) drawn under its row. A packet is a 2:3 portrait object that stands on its wire.
-
-Spacing rhythm: 8px base. Groups inside an object are tight (4–8px); objects on the rack are separated by 24–32px; sections by 64px. More space above a sign than below it.
-
-Responsive: the rack narrows by dropping columns, never by shrinking packets below 150px wide. At 480px and below the rack is two packets wide; shelf tags become full-width. The header sign shrinks with the display clamp.
-
-## Elevation & Depth
-
-Depth is physical and offset. Shadow colors are the rack's own green-black at low alpha (rgba(8, 30, 18, …)), never neutral black. Packets cast a soft, downward shadow onto the green (`0 6px 14px rgba(8, 30, 18, 0.35)`), a forward-leaning packet casts a longer one (`0 14px 28px rgba(8, 30, 18, 0.45)`). Tags and cards cast a tight paper shadow (`0 2px 4px rgba(8, 30, 18, 0.3)`). No glows, no zero-offset halos, no blur as decoration.
-
-### Shadow Vocabulary
-- **packet-rest** (`box-shadow: 0 6px 14px rgba(8,30,18,0.35)`): a packet standing in its slot.
-- **packet-lean** (`box-shadow: 0 14px 28px rgba(8,30,18,0.45)`): a packet tilted forward (recently pushed, or hovered).
-- **paper** (`box-shadow: 0 2px 4px rgba(8,30,18,0.3)`): tags, cards, signs.
-
-Perspective (1200px on the shelf grid) is what makes a leaning packet come forward; the lean is `rotateX(-8deg) translateY(-8px)` from the packet's bottom edge, softened to -5deg under 480px so it never leaves the viewport.
-
-### Named Rules
-**The Daylight Rule.** Shadows fall down and slightly forward, as under skylights; never upward, never colored.
-
-## Shapes
-
-Signs are near-square (2px); packets are near-square-cornered rectangles (3px) with a printed top band, a visible fold line one-eighth from the top, and a small semicircular tab cut at the top center where the rack's hook goes through. Shelf tags are white rounded rectangles (6px) with a clipped corner. Aisle signs are square-cornered. The tag clip is 4px, the sign hooks 8px on their top corners. Nothing is a pill except the price-gun label and the catalogue filter chips, which are the same object. Illustrations are two-color line-and-fill prints, slightly misregistered (the fill offset 1px from the line) so they read as printed, not rendered.
-
-## Components
-
-### Packet
-The signature component. An `<a>` to the repository. Front: language band across the top carrying the language name in Label type; the botanical print; the variety name in Headline type; a one-line strapline in Label type ("open source · fork of …" when applicable). Back (revealed on hover/focus by a Y-rotation, or shown below the front under reduced motion): the description in Body type at 0.875rem, the PACKED FOR stamp with the pushed date, and "Open on GitHub" as a printed instruction line. States: rest (packet-rest shadow), lean (the three most recently pushed, rotated -6° on X with packet-lean shadow), hover/focus (lifted 6px, packet-lean shadow, flipped), focus-visible (2px Tag White outline offset 3px). Loading: an empty slot with a dashed Wire outline and a "restocking" price-gun label. Error: a shelf tag naming the problem and the recovery.
-
-### Shelf Tag
-White paper tag clipped to a wire, holding hand-set copy (the intro, error text, notices). Body type, ink, 16–20px padding, paper shadow, a small drawn clip at the top edge.
-
-### Aisle Link (navigation)
-Square-cornered sign on Rack Green Deep with Packet Paper label text, uppercase Label type. Active: Packet Paper ground with Ink text. Hover: Rack Green Lit. Focus-visible: Tag White outline. On mobile the strip scrolls horizontally; it never collapses into a hamburger.
-
-### Stamp
-Courier Prime, Stamp Red, uppercase, with a 1.5px Stamp Red rounded border and a 2° rotation; slightly uneven ink via a masked texture is welcome but optional.
-
-### Index Card (Q&A)
-White lined card, Title type question, Body answer, a red margin line at the left (1px, Stamp Red, as on a real index card, not a colored border-left).
-
-### Catalogue Row (projects page)
-A dense ordered row: variety name, language band swatch, description, packed-for date, link. Rows are separated by 1px Wire lines on green, text in Packet Paper.
-
-## Do's and Don'ts
-
-### Do:
-- **Do** keep Rack Green as the page ground on every route; objects sit on it.
-- **Do** print every repo as a packet using the same front/back grammar, with the band color from GitHub's linguist data.
-- **Do** use one orchestrated motion (packets sliding into slots on load) and keep everything else still.
-- **Do** shape illustrations as two-color misregistered prints picked deterministically from the repo name.
-- **Do** let the oneko cat live on the top shelf; it is a binding personality asset.
-
-### Don't:
-- **Don't** use a dark page ground, a monospace body, neon accents or glows.
-- **Don't** ship a hero, a three-feature-card row, or a CTA button row.
-- **Don't** add hover effects beyond the packet lift/flip and the aisle link ground change.
-- **Don't** invent stars, downloads, proficiency levels or any number the GitHub API did not return.
-- **Don't** use gray for secondary text on paper; use Ink Soft.
+The Konami code toggles `body.kawaii-max`: the ground becomes a slow pastel rainbow, the
+title hue-cycles, the girls dance, and the sparkle trail triples. It persists in
+localStorage and a "calm down" button turns it off.
