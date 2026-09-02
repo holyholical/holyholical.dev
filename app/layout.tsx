@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { DotGothic16, Press_Start_2P, VT323 } from "next/font/google";
 import "./globals.css";
-import Badges from "@/components/Badges";
 import BgmButton from "@/components/BgmButton";
 import Footer from "@/components/Footer";
+import GrabButton from "@/components/GrabButton";
 import HitCounter from "@/components/HitCounter";
 import KonamiCode from "@/components/KonamiCode";
 import Marquee from "@/components/Marquee";
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <BgmButton />
                   <UwuToggle />
                 </div>
-                <Badges />
+                <GrabButton />
               </aside>
               <main className="main">{children}</main>
             </div>

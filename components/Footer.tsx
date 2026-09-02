@@ -1,15 +1,16 @@
 "use client";
 
+import ButtonWall from "@/components/ButtonWall";
 import { GITHUB_PROFILE_URL } from "@/lib/github";
 import { useShrine } from "@/lib/shrine-context";
+import { REPO_URL } from "@/lib/site";
 
-const REPO_URL = "https://github.com/holyholical/holyholical.dev";
-
-/** Webring bar, license line, and the mandatory "best viewed at" notice. */
+/** Button wall, webring bar, license line, and the mandatory "best viewed at" notice. */
 export default function Footer() {
   const { t } = useShrine();
   return (
     <footer className="foot">
+      <ButtonWall />
       <div className="webring">
         <a href={GITHUB_PROFILE_URL} target="_blank" rel="noopener noreferrer">
           « {t("my GitHub")}

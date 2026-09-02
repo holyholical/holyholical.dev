@@ -185,6 +185,17 @@ path.
 - The live GitHub feed is still the core. Loading, empty, and error states all speak in
   Holy's voice and offer a retry and a link out.
 
+## The button wall
+
+Every page signs off with a wall of real 88x31 GIFs, the way link exchanges worked
+before social media. The buttons live in `public/buttons/` and are listed with alt text
+in `lib/buttons.ts`; they came from the cyber.dabamos.de archive, which asks that you
+copy rather than hot-link, so they are copied. The shrine's own button,
+`holyholical.gif`, is drawn by `scripts/make-site-button.py` from the same pixel-map
+language as the icons and lives in the sidebar with a copy-me HTML snippet. Buttons are
+plain `<img>` at native size with `image-rendering: pixelated`; only the ones with a
+real destination are links. Every GIF is checked for 88x31 in the test suite.
+
 ## MAXIMUM KAWAII
 
 The Konami code toggles `body.kawaii-max`: the ground becomes a slow pastel rainbow, the
