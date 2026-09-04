@@ -1,5 +1,4 @@
-import { ICON_PALETTE, ICON_SIZE, ICONS, type IconName } from "@/lib/icons";
-import { spriteToRects } from "@/lib/sprites";
+import { ICON_PALETTE, ICON_SIZE, ICONS, spriteToRects, type IconName } from "@/lib/icons";
 
 interface PixelIconProps {
   name: IconName;

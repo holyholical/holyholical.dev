@@ -1,34 +1,25 @@
 ---
 name: holyholical.dev
-description: A 1998 anime shrine homepage. Pixel waifus, bevelled windows, sparkles, and a live GitHub feed.
+description: A 1998 anime homepage in the mascot's own colors, crimson and plum on warm cream. Bevelled windows, pixel type, live GitHub feed.
 colors:
-  pink: "#ff8fc8"
-  hot: "#ff2d95"
-  rose: "#ffd1e8"
-  lav: "#c8a2ff"
-  lav-deep: "#9b6bff"
-  sky: "#a2d2ff"
-  mint: "#b5ead7"
-  lemon: "#fff3a8"
-  cream: "#fff7fb"
-  paper: "#ffffff"
-  ground: "#ffe0f0"
-  ink: "#3a1f3a"
-  ink-soft: "#6b4a6b"
-  bevel-light: "#ffffff"
-  bevel-dark: "#b06a9a"
-  bevel-darker: "#6b3a5e"
-  link: "#c2148a"
-  link-visited: "#7a3cc4"
-  counter-glow: "#7dff9a"
-  counter-well: "#110011"
-  rainbow-1: "#ffc2e0"
-  rainbow-2: "#d7c2ff"
-  rainbow-3: "#c2e6ff"
-  rainbow-4: "#c2ffe6"
-  rainbow-5: "#fff5c2"
-  sparkle-sky: "#7bd5ff"
-  sparkle-gold: "#ffd166"
+  pink: "#b12140"
+  hot: "#841828"
+  rose: "#f2d6d8"
+  lav: "#b9a5c4"
+  lav-deep: "#36284d"
+  sky: "#e2d7e8"
+  mint: "#d8c6cc"
+  lemon: "#f3e1d4"
+  cream: "#f9f0ec"
+  paper: "#fffaf7"
+  ground: "#ecd6d6"
+  ink: "#1c1025"
+  ink-soft: "#5a4a63"
+  bevel-light: "#fffaf7"
+  bevel-dark: "#9a5566"
+  bevel-darker: "#5a1320"
+  link: "#841828"
+  link-visited: "#36284d"
 typography:
   banner:
     fontFamily: "'Press Start 2P', 'Courier New', monospace"
@@ -115,11 +106,6 @@ typography:
     fontSize: "18px"
     fontWeight: 400
     lineHeight: 1.2
-  sparkle:
-    fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
-    fontSize: "16px"
-    fontWeight: 400
-    lineHeight: 1
   icon:
     fontFamily: "'DotGothic16', 'MS Gothic', 'Courier New', monospace"
     fontSize: "13px"
@@ -127,10 +113,8 @@ typography:
     lineHeight: 1
 rounded:
   none: "0"
-  bubble: "10px"
   chat: "12px"
   chat-tail: "2px"
-  sprite-hit: "6px"
 spacing:
   hair: "2px"
   xs: "4px"
@@ -143,24 +127,26 @@ spacing:
   xxxl: "18px"
 ---
 
-# holyholical.dev: the Kawaii Shrine
+# holyholical.dev
 
 ## The world
 
-It is 1998 and Holy has a homepage. It lives on a tiled pastel ground of stars and
-hearts, inside one big double-bordered page with a drop shadow that does not blur.
-Every section is a Windows-95 window with a pink-to-lavender title bar and working
-minimise and close buttons. The type is bitmap: Press Start 2P for anything that reads
-as a label or heading, DotGothic16 for body copy, VT323 for anything that feels like a
-terminal, a counter, or a visual-novel text box.
+It is 1998 and Holy has a homepage. Every color is sampled from the mascot: crimson
+from the dress, plum from the hair, warm cream from the skin. It lives on a tiled blush
+ground of stars and hearts, inside one big double-bordered page with a drop shadow that does not blur.
+The header is a title on the left and the mascot on the right, standing on the nav
+bar. The nav bar is a row of bevelled buttons with the current page pressed in. Under
+it, the front page is a few lines of terminal type and a button to GitHub; the other
+pages are Windows-95 windows with a pink-to-lavender title bar. The type is bitmap:
+Press Start 2P for anything that reads as a label or heading, DotGothic16 for body
+copy, VT323 for anything that feels like a terminal.
 
-## The cast
+## The mascot
 
-Four palette-swapped pixel girls narrate the site. They are drawn in `lib/sprites.ts` as
-a 20x31 grid of palette keys and rendered as SVG rects with crisp edges. Expressions are
-patches over the eyes, brows, and mouth. Howwy-tan (pink) is the mascot and the one who
-speaks in the intro dialog and the Q&A. Minto (mint), Lavvy (lavender), and Kuro (black)
-live in the shrine on the home page.
+One image, `public/waifu.png`, a real anime cutout with a transparent background. It
+is anchored to the top edge of the nav bar with `bottom: 100%` so she stands on it at
+every width. It is a plain `<img>` with width and height set so nothing shifts while it
+loads. Do not add a second mascot, a sprite sheet, or a speech bubble.
 
 ## The voice
 
@@ -168,20 +154,18 @@ Copy is written as plain English in source and run through `uwuify` at render. L
 (default) swaps r and l for w, adds "ny", and sprinkles a suffix. Level 2 goes further.
 Level 0 is plain English for anyone who needs to read the page. "Holy" is always
 "Howwy". Repo names, URLs, and proper nouns like GitHub are rendered outside the uwu
-path.
+path. The speech toggle lives at the end of the nav bar.
 
 ## Rules
 
 - No emoji, ever. Icons are 10x10 pixel maps in `lib/icons.ts` rendered by `PixelIcon`;
-  decorative glyphs are plain text characters (★ ☆ ♡ ✧ ♪) that every font ships.
+  decorative glyphs are plain text characters (★ ☆ ♡ ✧) that every font ships.
 - Nothing blurs. Shadows are hard offsets. Motion uses `steps()` so it looks like frames.
 - Bevels are two-tone borders: light on top-left, dark on bottom-right; pressed inverts.
-- Blink is allowed on exactly two things: NEW! tags and the dialog advance hint.
-- Sound is opt-in, always. The BGM button is the only way audio starts.
-- The hit counter counts this browser only and says so. No fake global numbers.
+- Blink is allowed on exactly one thing: NEW! tags.
+- No sound, no cursor trails, no counters, no easter eggs. The page is the page.
 - Every interactive thing works with a keyboard and has a visible focus ring.
-- `prefers-reduced-motion` turns off the marquee, sparkles, bobbing, blinking, and the
-  rainbow ground.
+- `prefers-reduced-motion` turns off blinking and the loading spinner.
 - The live GitHub feed is still the core. Loading, empty, and error states all speak in
   Holy's voice and offer a retry and a link out.
 
@@ -190,14 +174,8 @@ path.
 Every page signs off with a wall of real 88x31 GIFs, the way link exchanges worked
 before social media. The buttons live in `public/buttons/` and are listed with alt text
 in `lib/buttons.ts`; they came from the cyber.dabamos.de archive, which asks that you
-copy rather than hot-link, so they are copied. The shrine's own button,
+copy rather than hot-link, so they are copied. The site's own button,
 `holyholical.gif`, is drawn by `scripts/make-site-button.py` from the same pixel-map
-language as the icons and lives in the sidebar with a copy-me HTML snippet. Buttons are
-plain `<img>` at native size with `image-rendering: pixelated`; only the ones with a
-real destination are links. Every GIF is checked for 88x31 in the test suite.
-
-## MAXIMUM KAWAII
-
-The Konami code toggles `body.kawaii-max`: the ground becomes a slow pastel rainbow, the
-title hue-cycles, the girls dance, and the sparkle trail triples. It persists in
-localStorage and a "calm down" button turns it off.
+language as the icons. Buttons are plain `<img>` at native size with
+`image-rendering: pixelated`; only the ones with a real destination are links. Every
+GIF is checked for 88x31 in the test suite.

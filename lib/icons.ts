@@ -4,11 +4,11 @@ export type IconName = "home" | "disk" | "sword" | "letter" | "chat" | "card" | 
 export const ICON_SIZE = 10;
 
 export const ICON_PALETTE: Record<string, string> = {
-  K: "#3a1f3a",
-  P: "#ff2d95",
-  W: "#ffffff",
-  L: "#fff3a8",
-  S: "#a2d2ff",
+  K: "#1c1025",
+  P: "#b12140",
+  W: "#fffaf7",
+  L: "#ecd6cf",
+  S: "#b9a5c4",
 };
 
 export const ICONS: Record<IconName, readonly string[]> = {
@@ -121,3 +121,19 @@ export const ICONS: Record<IconName, readonly string[]> = {
     "..........",
   ],
 };
+
+export interface PixelRect {
+  x: number;
+  y: number;
+  fill: string;
+}
+
+/** Turns a grid of palette keys into one rect per painted cell. "." is empty. */
+export function spriteToRects(grid: readonly string[], palette: Partial<Record<string, string>>): PixelRect[] {
+  return grid.flatMap((row, y) =>
+    Array.from(row).flatMap((key, x) => {
+      const fill = key === "." ? undefined : palette[key];
+      return fill ? [{ x, y, fill }] : [];
+    }),
+  );
+}

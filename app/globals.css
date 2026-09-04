@@ -1,34 +1,35 @@
 /*
  * holyholical.dev, Kawaii Shrine edition.
- * A 1998 anime homepage: tiled pastel ground, bevelled windows, pixel type, sparkles.
- * Tokens first, then the shell, then components, then the MAXIMUM KAWAII override.
+ * A 1998 anime homepage: tiled pastel ground, a mascot on the nav bar, bevelled windows, pixel type.
+ * Tokens first, then the shell, then components.
  */
 
 :root {
-  --pink: #ff8fc8;
-  --hot: #ff2d95;
-  --rose: #ffd1e8;
-  --lav: #c8a2ff;
-  --lav-deep: #9b6bff;
-  --sky: #a2d2ff;
-  --mint: #b5ead7;
-  --lemon: #fff3a8;
-  --cream: #fff7fb;
-  --paper: #ffffff;
-  --ink: #3a1f3a;
-  --ink-soft: #6b4a6b;
-  --bevel-light: #ffffff;
-  --bevel-dark: #b06a9a;
-  --bevel-darker: #6b3a5e;
-  --link: #c2148a;
-  --link-visited: #7a3cc4;
-  --focus: #ff2d95;
+  /* sampled from public/waifu.png: crimson dress, plum hair, warm skin */
+  --pink: #b12140;
+  --hot: #841828;
+  --rose: #f2d6d8;
+  --lav: #b9a5c4;
+  --lav-deep: #36284d;
+  --sky: #e2d7e8;
+  --mint: #d8c6cc;
+  --lemon: #f3e1d4;
+  --cream: #f9f0ec;
+  --paper: #fffaf7;
+  --ink: #1c1025;
+  --ink-soft: #5a4a63;
+  --bevel-light: #fffaf7;
+  --bevel-dark: #9a5566;
+  --bevel-darker: #5a1320;
+  --link: #841828;
+  --link-visited: #36284d;
+  --focus: #b12140;
 
   --font-pixel: "Press Start 2P", "Courier New", monospace;
   --font-dot: "DotGothic16", "MS Gothic", "Courier New", monospace;
   --font-vt: "VT323", "Courier New", monospace;
 
-  --tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Ccircle cx='8' cy='8' r='1.6' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='28' r='1.2' fill='%23ffffff'/%3E%3Cpath d='M22 6l1.4 3.2 3.4.3-2.6 2.3.8 3.4-3-1.8-3 1.8.8-3.4-2.6-2.3 3.4-.3z' fill='%23ffb6dd'/%3E%3Cpath d='M38 40l.9 2 2.1.2-1.6 1.4.5 2.1-1.9-1.1-1.9 1.1.5-2.1-1.6-1.4 2.1-.2z' fill='%23d7c2ff'/%3E%3Cpath d='M10 32c0-2 3-2 3 0 0-2 3-2 3 0 0 2-3 4-3 4s-3-2-3-4z' fill='%23ffc2e0'/%3E%3C/svg%3E");
+  --tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Ccircle cx='8' cy='8' r='1.6' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='28' r='1.2' fill='%23ffffff'/%3E%3Cpath d='M22 6l1.4 3.2 3.4.3-2.6 2.3.8 3.4-3-1.8-3 1.8.8-3.4-2.6-2.3 3.4-.3z' fill='%23d99aa6'/%3E%3Cpath d='M38 40l.9 2 2.1.2-1.6 1.4.5 2.1-1.9-1.1-1.9 1.1.5-2.1-1.6-1.4 2.1-.2z' fill='%23b9a5c4'/%3E%3Cpath d='M10 32c0-2 3-2 3 0 0-2 3-2 3 0 0 2-3 4-3 4s-3-2-3-4z' fill='%23e6b4bd'/%3E%3C/svg%3E");
 }
 
 * {
@@ -42,7 +43,7 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background-color: #ffe0f0;
+  background-color: #ecd6d6;
   background-image: var(--tile);
   font-family: var(--font-dot);
   font-size: 17px;
@@ -66,7 +67,7 @@ a:visited {
 
 ::selection {
   background: var(--hot);
-  color: #fff;
+  color: var(--paper);
 }
 
 h1,
@@ -84,142 +85,96 @@ p {
 
 /* ---------- shell ---------- */
 
+/* ---------- shell ---------- */
+
 .page {
-  width: min(1040px, 100% - 24px);
+  width: min(960px, 100% - 24px);
   margin: 16px auto 32px;
   background: var(--cream);
   border: 3px double var(--ink);
   box-shadow: 6px 6px 0 var(--bevel-dark), 0 0 0 4px var(--rose);
 }
 
-.banner {
-  text-align: center;
-  padding: 18px 16px 10px;
-  background:
-    linear-gradient(90deg, var(--rose), var(--paper) 30%, var(--paper) 70%, var(--sky)),
-    var(--paper);
-  border-bottom: 3px double var(--ink);
+/* header: title on the left, mascot standing on the nav bar at the right */
+
+.top {
+  position: relative;
+  padding-top: 24px;
+  background: linear-gradient(90deg, var(--rose), var(--paper) 30%, var(--paper) 70%, var(--sky)), var(--paper);
 }
 
-.banner__deco {
-  color: var(--hot);
-  font-size: 14px;
-  letter-spacing: 0.3em;
-  margin: 0 0 6px;
+.top__head {
+  padding: 8px 220px 14px 24px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.banner__title {
-  font-size: clamp(16px, 3.4vw, 30px);
+.top__title {
+  font-size: clamp(14px, 3vw, 26px);
   color: var(--hot);
   text-shadow: 3px 3px 0 var(--lav), 5px 5px 0 var(--ink);
-  letter-spacing: 0.02em;
 }
 
-.banner__star {
+.top__star {
   display: inline-block;
   color: var(--lemon);
   -webkit-text-stroke: 1px var(--ink);
-  animation: twinkle 1.4s steps(2, end) infinite;
 }
 
-.banner__sub {
+.top__sub {
   font-family: var(--font-vt);
   font-size: 24px;
   color: var(--ink-soft);
-  margin: 8px 0 6px;
+  margin: 8px 0 0;
 }
 
-.construction {
-  display: inline-block;
-  margin: 4px 0 0;
-  padding: 5px;
-  background: repeating-linear-gradient(45deg, var(--lemon) 0 10px, var(--ink) 10px 20px);
-  border: 2px solid var(--ink);
+.top__waifu {
+  position: absolute;
+  right: 28px;
+  bottom: 100%;
+  width: auto;
+  height: 200px;
+  pointer-events: none;
 }
 
-.construction__text {
-  display: inline-flex;
+/* the bar itself is the thing she stands on, so the image is anchored to this wrapper */
+
+.top__bar {
+  position: relative;
+}
+
+.nav {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  line-height: 1;
-  color: var(--ink);
-  background: var(--lemon);
-}
-
-.construction__icon {
-  display: block;
-  margin: -5px 0;
-}
-
-.marquee {
-  overflow: hidden;
-  background: var(--ink);
-  color: var(--lemon);
-  font-family: var(--font-vt);
-  font-size: 22px;
+  gap: 8px 14px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, var(--pink), var(--hot));
+  border-top: 3px double var(--ink);
   border-bottom: 3px double var(--ink);
-  white-space: nowrap;
-}
-
-.marquee__track {
-  display: inline-flex;
-  animation: marquee 28s linear infinite;
-  padding: 2px 0;
-}
-
-.marquee:hover .marquee__track {
-  animation-play-state: paused;
-}
-
-.frame {
-  display: grid;
-  grid-template-columns: 228px 1fr;
-  gap: 0;
-}
-
-.side {
-  padding: 14px 12px;
-  background: var(--rose);
-  border-right: 3px double var(--ink);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: stretch;
-}
-
-.side__mascot {
-  display: flex;
-  justify-content: center;
-}
-
-.side__controls {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
 }
 
 .main {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
+  padding: 18px 20px 24px;
 }
 
-.two-up {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
-  align-items: start;
+.blurb {
+  max-width: 640px;
+  font-family: var(--font-vt);
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.blurb p {
+  margin: 0 0 14px;
 }
 
 .lead {
-  font-size: 18px;
-  margin-bottom: 14px;
+  margin: 0 0 14px;
+  font-family: var(--font-vt);
+  font-size: 22px;
 }
 
 /* ---------- buttons ---------- */
@@ -267,32 +222,49 @@ p {
 
 .btn--pink:hover {
   background: var(--hot);
-  color: #fff;
+  color: var(--paper);
 }
 
 /* ---------- nav ---------- */
+
+/* ---------- nav buttons (after .btn so the flex display wins) ---------- */
 
 .nav__list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 8px;
+  flex: 1;
 }
 
 .nav__btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  text-align: left;
-  width: 100%;
 }
 
 .nav__icon {
   flex: none;
   display: block;
   margin: -5px 0;
+}
+
+/* ---------- speech toggle ---------- */
+
+.uwu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.uwu__label {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--paper);
+  text-shadow: 1px 1px 0 var(--ink);
+  margin-right: 4px;
 }
 
 /* ---------- windows ---------- */
@@ -311,7 +283,7 @@ p {
   gap: 8px;
   padding: 5px 6px 5px 8px;
   background: linear-gradient(90deg, var(--hot), var(--lav-deep));
-  color: #fff;
+  color: var(--paper);
   border-bottom: 1px solid var(--ink);
 }
 
@@ -365,302 +337,6 @@ p {
   background: var(--cream);
 }
 
-/* ---------- visual novel box ---------- */
-
-.vn {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  align-items: end;
-}
-
-.vn__portrait {
-  display: flex;
-  align-items: flex-end;
-}
-
-.vn__portrait svg {
-  animation: bob 1.6s ease-in-out infinite;
-}
-
-.vn__box {
-  position: relative;
-  display: block;
-  width: 100%;
-  min-height: 132px;
-  text-align: left;
-  padding: 30px 16px 26px;
-  font: inherit;
-  font-family: var(--font-vt);
-  font-size: 26px;
-  line-height: 1.2;
-  color: var(--ink);
-  background: linear-gradient(180deg, #fff 0%, var(--rose) 100%);
-  border: 3px double var(--ink);
-  box-shadow: inset 0 0 0 2px var(--paper), 4px 4px 0 var(--lav);
-  cursor: pointer;
-}
-
-.vn__name {
-  position: absolute;
-  top: -12px;
-  left: 12px;
-  padding: 4px 10px;
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  color: #fff;
-  background: var(--hot);
-  border: 2px solid var(--ink);
-}
-
-.vn__text {
-  display: block;
-  white-space: pre-wrap;
-  min-height: 2.4em;
-}
-
-.vn__hint {
-  position: absolute;
-  right: 12px;
-  bottom: 6px;
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  color: var(--hot);
-  animation: blink 1s steps(2, end) infinite;
-}
-
-.vn__count {
-  position: absolute;
-  left: 12px;
-  bottom: 6px;
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  color: var(--ink-soft);
-}
-
-/* ---------- waifus ---------- */
-
-.waifu {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.waifu__button {
-  padding: 4px;
-  background: none;
-  border: 0;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.waifu__button:hover .waifu__sprite {
-  transform: translateY(-4px);
-}
-
-.waifu__sprite {
-  display: block;
-  transition: transform 120ms steps(2, end);
-  animation: bob 2.2s ease-in-out infinite;
-}
-
-.waifu__bubble {
-  position: absolute;
-  bottom: calc(100% - 4px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  width: max-content;
-  max-width: 220px;
-  margin: 0;
-  padding: 8px 10px;
-  font-family: var(--font-vt);
-  font-size: 19px;
-  line-height: 1.15;
-  color: var(--ink);
-  background: var(--paper);
-  border: 2px solid var(--ink);
-  border-radius: 10px;
-  box-shadow: 3px 3px 0 var(--lav);
-  animation: pop 160ms steps(3, end);
-}
-
-.waifu__bubble::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -9px;
-  width: 12px;
-  height: 12px;
-  background: var(--paper);
-  border-right: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  transform: translateX(-50%) rotate(45deg);
-}
-
-.waifu__name {
-  margin: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.waifu__nametag {
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  color: var(--hot);
-}
-
-.waifu__title {
-  font-family: var(--font-vt);
-  font-size: 18px;
-  color: var(--ink-soft);
-}
-
-.shrine-hall__hint {
-  font-family: var(--font-vt);
-  font-size: 22px;
-  text-align: center;
-  color: var(--ink-soft);
-}
-
-.cast {
-  list-style: none;
-  margin: 0 0 14px;
-  padding: 18px 8px 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 18px 8px;
-  background: linear-gradient(180deg, transparent 0 78%, var(--mint) 78%);
-  border-bottom: 3px double var(--ink);
-}
-
-.cast li:nth-child(2) .waifu__sprite {
-  animation-delay: -0.6s;
-}
-
-.cast li:nth-child(3) .waifu__sprite {
-  animation-delay: -1.1s;
-}
-
-.cast li:nth-child(4) .waifu__sprite {
-  animation-delay: -1.7s;
-}
-
-.offering {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.offering__count {
-  font-family: var(--font-vt);
-  font-size: 22px;
-}
-
-/* ---------- counter ---------- */
-
-.counter {
-  text-align: center;
-}
-
-.counter__label,
-.counter__note {
-  margin: 0;
-  font-family: var(--font-vt);
-  font-size: 18px;
-  color: var(--ink-soft);
-}
-
-.counter__digits {
-  display: inline-flex;
-  gap: 2px;
-  margin: 4px 0;
-  padding: 4px;
-  background: var(--ink);
-  border: 2px solid;
-  border-color: var(--bevel-darker) var(--bevel-light) var(--bevel-light) var(--bevel-darker);
-}
-
-.counter__digit {
-  display: inline-block;
-  width: 18px;
-  padding: 4px 0;
-  font-family: var(--font-vt);
-  font-size: 24px;
-  line-height: 1;
-  color: #7dff9a;
-  background: #101;
-  text-align: center;
-  text-shadow: 0 0 4px #7dff9a;
-}
-
-/* ---------- bgm / uwu ---------- */
-
-.bgm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.bgm__eq {
-  display: inline-flex;
-  gap: 3px;
-  align-items: flex-end;
-  height: 14px;
-}
-
-.bgm__eq i {
-  display: block;
-  width: 4px;
-  background: var(--hot);
-  animation: eq 0.5s steps(3, end) infinite alternate;
-}
-
-.bgm__eq i:nth-child(2) {
-  animation-delay: -0.15s;
-}
-
-.bgm__eq i:nth-child(3) {
-  animation-delay: -0.3s;
-}
-
-.bgm__eq i:nth-child(4) {
-  animation-delay: -0.45s;
-}
-
-.bgm__error {
-  margin: 0;
-  font-family: var(--font-vt);
-  font-size: 18px;
-  color: var(--hot);
-  text-align: center;
-}
-
-.uwu {
-  margin: 0;
-  padding: 6px 8px 8px;
-  border: 2px groove var(--bevel-dark);
-}
-
-.uwu__legend {
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  padding: 0 4px;
-}
-
-.uwu__row {
-  display: flex;
-  gap: 4px;
-  justify-content: center;
-}
 
 /* ---------- 88x31 buttons ---------- */
 
@@ -678,54 +354,6 @@ a:focus-visible > .webbtn {
   transform: translateY(-1px);
 }
 
-/* the sidebar "link me" box */
-
-.grab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  padding: 8px;
-  background: var(--paper);
-  border: 2px solid;
-  border-color: var(--bevel-light) var(--bevel-darker) var(--bevel-darker) var(--bevel-light);
-  box-shadow: 0 0 0 1px var(--ink);
-}
-
-.grab__legend {
-  margin: 0;
-  font-family: var(--font-pixel);
-  font-size: 8px;
-  color: var(--link);
-}
-
-.grab__preview {
-  padding: 3px;
-  background: var(--ground);
-  border: 1px dashed var(--bevel-dark);
-}
-
-.grab__code {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 4px;
-  font-family: var(--font-vt);
-  font-size: 14px;
-  line-height: 1.15;
-  color: var(--ink);
-  background: var(--cream);
-  border: 1px solid var(--ink);
-  border-color: var(--bevel-darker) var(--bevel-light) var(--bevel-light) var(--bevel-darker);
-  resize: none;
-  overflow-wrap: anywhere;
-}
-
-.grab__copy {
-  min-width: 96px;
-}
-
-/* the footer wall */
 
 .wall {
   margin: 0 auto 14px;
@@ -762,7 +390,6 @@ a:focus-visible > .webbtn {
 }
 
 /* ---------- tables, chips, tags ---------- */
-
 .table-wrap {
   overflow-x: auto;
 }
@@ -850,7 +477,7 @@ a:focus-visible > .webbtn {
   padding: 2px 5px;
   font-family: var(--font-pixel);
   font-size: 7px;
-  color: #fff;
+  color: var(--paper);
   background: var(--hot);
   border: 1px solid var(--ink);
   vertical-align: middle;
@@ -864,52 +491,6 @@ a:focus-visible > .webbtn {
 }
 
 /* ---------- what's new ---------- */
-
-.whatsnew__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.whatsnew__item {
-  padding: 8px 10px;
-  background: var(--cream);
-  border: 1px dotted var(--bevel-dark);
-}
-
-.whatsnew__name {
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  line-height: 1.8;
-  margin-right: 8px;
-}
-
-.whatsnew__lang {
-  font-family: var(--font-vt);
-  font-size: 18px;
-  margin: 0 8px 0 4px;
-}
-
-.whatsnew__date {
-  font-family: var(--font-vt);
-  font-size: 18px;
-  color: var(--ink-soft);
-}
-
-.whatsnew__desc {
-  margin: 4px 0 0;
-  font-size: 15px;
-}
-
-.whatsnew__foot {
-  margin: 12px 0 0;
-  font-family: var(--font-vt);
-  font-size: 20px;
-}
-
 .feed-status {
   font-family: var(--font-vt);
   font-size: 22px;
@@ -976,7 +557,7 @@ a:focus-visible > .webbtn {
   justify-content: center;
   font-family: var(--font-pixel);
   font-size: 7px;
-  color: #fff;
+  color: var(--paper);
   background: var(--ink);
 }
 
@@ -1005,7 +586,6 @@ a:focus-visible > .webbtn {
 }
 
 /* ---------- q&a chat ---------- */
-
 .chat {
   list-style: none;
   margin: 0 0 16px;
@@ -1048,10 +628,6 @@ a:focus-visible > .webbtn {
   border-bottom-left-radius: 2px;
 }
 
-.chat__face {
-  flex: none;
-}
-
 .chat__who {
   display: block;
   font-family: var(--font-pixel);
@@ -1067,6 +643,7 @@ a:focus-visible > .webbtn {
   border: 2px dashed var(--ink);
 }
 
+/* ---------- footer ---------- */
 /* ---------- footer ---------- */
 
 .foot {
@@ -1101,139 +678,21 @@ a:focus-visible > .webbtn {
   font-size: 19px;
 }
 
-.foot__secret {
-  margin: 8px 0 0;
-  font-family: var(--font-pixel);
-  font-size: 7px;
-  color: var(--rose);
-  user-select: none;
-}
-
-.foot__secret:hover {
-  color: var(--ink-soft);
-}
-
-/* ---------- sparkles, toast ---------- */
-
-.sparkles {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9000;
-  overflow: hidden;
-}
-
-.sparkle {
-  position: absolute;
-  font-size: 16px;
-  line-height: 1;
-  transform: translate(-50%, -50%);
-  animation: sparkle 0.9s steps(6, end) forwards;
-  text-shadow: 1px 1px 0 #fff;
-}
-
-.toast {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  z-index: 9500;
-  transform: translateX(-50%);
-  margin: 0;
-  padding: 12px 18px;
-  font-family: var(--font-pixel);
-  font-size: 11px;
-  color: #fff;
-  background: var(--hot);
-  border: 3px double #fff;
-  box-shadow: 0 0 0 3px var(--ink);
-  animation: pop 200ms steps(4, end);
-}
-
-.max-off {
-  position: fixed;
-  right: 12px;
-  bottom: 12px;
-  z-index: 9500;
-}
-
-/* ---------- MAXIMUM KAWAII ---------- */
-
-body.kawaii-max {
-  background-color: transparent;
-  background-image: var(--tile), linear-gradient(120deg, #ffc2e0, #d7c2ff, #c2e6ff, #c2ffe6, #fff5c2, #ffc2e0);
-  background-size: 48px 48px, 600% 600%;
-  animation: rainbow 8s linear infinite;
-}
-
-body.kawaii-max .waifu__sprite {
-  animation: dance 0.5s steps(2, end) infinite;
-}
-
-body.kawaii-max .banner__title {
-  animation: hue 2s linear infinite;
-}
-
-body.kawaii-max .page {
-  box-shadow: 6px 6px 0 var(--hot), 0 0 0 4px var(--lemon), 0 0 30px var(--hot);
-}
-
-/* ---------- keyframes ---------- */
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
+/* ---------- motion ---------- */
 
 @keyframes blink {
-  50% {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
     opacity: 0;
   }
 }
 
 .blink {
-  animation: blink 0.9s steps(2, end) infinite;
-}
-
-@keyframes twinkle {
-  50% {
-    opacity: 0.35;
-  }
-}
-
-@keyframes bob {
-  50% {
-    transform: translateY(-3px);
-  }
-}
-
-@keyframes dance {
-  0% {
-    transform: translateY(0) rotate(-6deg);
-  }
-  100% {
-    transform: translateY(-6px) rotate(6deg);
-  }
-}
-
-@keyframes pop {
-  from {
-    transform: translateX(-50%) scale(0.6);
-  }
-}
-
-.toast {
-  animation-name: pop;
-}
-
-@keyframes sparkle {
-  to {
-    transform: translate(calc(-50% + var(--drift, 0px)), 30px) scale(0.2) rotate(120deg);
-    opacity: 0;
-  }
+  animation: blink 1s steps(1, end) infinite;
 }
 
 @keyframes spin {
@@ -1242,67 +701,26 @@ body.kawaii-max .page {
   }
 }
 
-@keyframes eq {
-  from {
-    height: 3px;
-  }
-  to {
-    height: 14px;
-  }
-}
-
-@keyframes rainbow {
-  to {
-    background-position: 0 0, 600% 0;
-  }
-}
-
-@keyframes hue {
-  to {
-    filter: hue-rotate(360deg);
-  }
-}
-
-/* ---------- responsive ---------- */
+/* ---------- small screens ---------- */
 
 @media (max-width: 760px) {
-  .frame {
-    grid-template-columns: 1fr;
+  .top__head {
+    padding-right: 130px;
+    min-height: 110px;
   }
 
-  .side {
-    border-right: 0;
-    border-bottom: 3px double var(--ink);
+  .top__waifu {
+    height: 130px;
+    right: 12px;
   }
 
   .nav__list {
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
   }
 
-  .nav__btn {
-    width: auto;
-  }
-
-  .side__mascot {
-    display: none;
-  }
-
-  .side__controls {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .uwu {
+    width: 100%;
     justify-content: center;
-    align-items: flex-start;
-  }
-
-  .vn {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .vn__box {
-    font-size: 22px;
   }
 
   .chat__q,
@@ -1316,20 +734,8 @@ body.kawaii-max .page {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee__track,
   .blink,
-  .banner__star,
-  .vn__hint,
-  .vn__portrait svg,
-  .waifu__sprite,
-  .bgm__eq i,
-  .spinner,
-  body.kawaii-max,
-  body.kawaii-max .banner__title {
+  .spinner {
     animation: none;
-  }
-
-  .waifu__sprite {
-    transition: none;
   }
 }

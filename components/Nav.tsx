@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import PixelIcon from "@/components/PixelIcon";
+import UwuToggle from "@/components/UwuToggle";
 import type { IconName } from "@/lib/icons";
 
 const LINKS = [
@@ -14,8 +15,8 @@ const LINKS = [
 
 const normalise = (path: string) => (path.endsWith("/") ? path : `${path}/`);
 
-/** Pixel bevel nav buttons. Marks the current page. */
-export default function SideNav() {
+/** The horizontal bar under the mascot. Bevel buttons, current page pressed in, speech toggle at the end. */
+export default function Nav() {
   const pathname = normalise(usePathname() ?? "/");
   return (
     <nav className="nav" aria-label="Site">
@@ -31,6 +32,7 @@ export default function SideNav() {
           );
         })}
       </ul>
+      <UwuToggle />
     </nav>
   );
 }

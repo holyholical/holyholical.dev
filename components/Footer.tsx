@@ -29,9 +29,6 @@ export default function Footer() {
           {t("license")}
         </a>
       </p>
-      <p className="foot__secret" aria-hidden="true">
-        ↑↑↓↓←→←→BA
-      </p>
     </footer>
   );
 }
